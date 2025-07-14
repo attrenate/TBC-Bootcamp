@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer Funds - MyBank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">MyBank</div>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="transactions.html">Transactions</a></li>
+            <li><a href="transfer.html">Transfer Funds</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- Transfer Funds Form -->
+    <main class="transfer-page">
+        <h1>Transfer Funds</h1>
+
+        <form class="transfer-form" id="transferForm">
+            <label for="receiver">Receiver’s Name:</label>
+            <input type="text" id="receiver" name="receiver" required>
+
+            <label for="amount">Amount (USD):</label>
+            <input type="number" id="amount" name="amount" required min="1">
+
+            <label for="description">Description (optional):</label>
+            <input type="text" id="description" name="description">
+
+            <button type="submit">Send Money</button>
+        </form>
+
+        <p id="confirmationMessage" class="confirmation-message"></p>
+    </main>
+
+    
+    <script>
+        const form = document.getElementById('transferForm');
+        const message = document.getElementById('confirmationMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const receiver = document.getElementById('receiver').value;
+            const amount = document.getElementById('amount').value;
+
+            message.textContent = `Successfully sent $${amount} to ${receiver}!`;
+            form.reset();
+        });
+    </script>
+</body>
+</html>
